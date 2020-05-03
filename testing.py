@@ -1,12 +1,11 @@
+
+#importing packages
 import dash_html_components as html
 import dash_core_components as dcc
 import dash
-import pprint as pprint
 import pandas as pd
 from datetime import datetime
 import plotly.express as px
-import chart_studio
-import chart_studio.plotly as py
 
 
 
@@ -148,7 +147,7 @@ final_df = xdf.merge(df_today[['countryCode','country','continent']],on='country
 #final_df['total_deaths'] = final_df['total_deaths'].abs()
 
 
-
+#this is a choropleth map showing the total deaths by country.
 fig4 = px.choropleth(
     final_df,
     locations="countryCode",
@@ -160,6 +159,7 @@ fig4 = px.choropleth(
 
 #fig4.show()
 
+#this is a map with scatterpoints with size equal to the proportion of total accumulated cases.
 fig5 = px.scatter_geo(
     final_df,
     locations='countryCode',
@@ -216,16 +216,9 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},
 )
 
 
-#this website deployment did not work
-# data = [fig,fig2,fig3,fig4,fig5]
-# chart_studio.tools.set_credentials_file(username='Christ3103', api_key='pebp8XYapzaOmXdnT3QL')
-# py.plot(data, filename = 'testing', auto_open=True)
 
 
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
-
 
